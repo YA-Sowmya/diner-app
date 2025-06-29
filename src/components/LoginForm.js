@@ -52,7 +52,7 @@ function LoginForm({ onClose, onSuccess }) {
             className="w-full border border-accent focus:border-2 focus:border-accent focus:outline-none px-3 py-2 rounded-md"
           />
           <div className="w-full flex justify-center">
-            <Button className="text-lg px-4 mt-4 md:text-xl lg:text-2xl font-markazi" type="submit">
+            <Button className="px-4 mt-4 md:text-xl lg:text-2xl font-markazi" type="submit">
               {isSignup ? 'Sign Up' : 'Log In'}
             </Button>
           </div>

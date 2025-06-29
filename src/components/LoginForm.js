@@ -34,7 +34,7 @@ function LoginForm({ onClose, onSuccess }) {
         <h2 className="text-2xl md:text-3xl lg:text-3xl mb-4 text-center text-primary font-markazi">
           {isSignup ? 'Sign Up' : 'Log In'}
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4  ">
           <input
             type="email"
             placeholder="Email"
@@ -51,8 +51,8 @@ function LoginForm({ onClose, onSuccess }) {
             required
             className="w-full border border-accent focus:border-2 focus:border-accent focus:outline-none px-3 py-2 rounded-md"
           />
-          <div className="text-lg px-4 mt-4 md:text-xl lg:text-2xl font-markazi">
-            <Button type="submit">
+          <div className="w-full flex justify-center">
+            <Button className="text-lg px-4 mt-4 md:text-xl lg:text-2xl font-markazi" type="submit">
               {isSignup ? 'Sign Up' : 'Log In'}
             </Button>
           </div>

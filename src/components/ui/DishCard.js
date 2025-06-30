@@ -27,7 +27,7 @@ function DishCard({ id, name, description, price, image, quantity = 0, onAdd, on
 
     <div className="mt-4 flex justify-center items-center gap-2">
       {quantity === 0 ? (
-        <Button onClick={onAdd} className="px-3 py-1 text-sm">Add</Button>
+        <Button onClick={onAdd} className="px-3 h-8 py-1 text-sm">Add</Button>
       ) : (
         <div className="flex items-center justify-center gap-2">
           <Button onClick={onDecrement} className="w-8 h-8 flex items-center justify-center bg-accent text-primary rounded text-lg leading-[1]">−</Button>

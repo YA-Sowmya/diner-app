@@ -92,7 +92,7 @@ function Navbar({
 
       {/* MOBILE SLIDE MENU (below navbar) */}
       {menuOpen && (
-        <div className="absolute top-full left-0 w-full h-[25vh] bg-highlight z-40 shadow-md px-6 items-center  py-6 flex flex-col gap-2 text-xl text-primary font-markazi">
+        <div className="absolute top-full left-0 w-full h-[32vh] bg-highlight z-40 shadow-md px-6 items-center  py-6 flex flex-col justify-center gap-2 text-xl text-primary font-markazi">
           <button
             className="absolute top-4 right-4"
             onClick={() => setMenuOpen(false)}
@@ -100,7 +100,7 @@ function Navbar({
             <img
               src={close}
               alt="Close menu"
-              className="h-6 w-6"
+              className="h-3 w-3"
               style={{
                 filter: 'invert(27%) sepia(13%) saturate(1100%) hue-rotate(60deg)',
               }}

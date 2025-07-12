@@ -11,13 +11,6 @@ A fully responsive single-page restaurant web application built using **React** 
 
 ---
 
-## Test Login Credentials
-
-To experience the app as a user:
-
-- **Email:** `littlelemon2002@email.com`
-- **Password:** `123456`
-
 ---
 
 ## What This Project Demonstrates
@@ -55,4 +48,10 @@ To experience the app as a user:
 
 ---
 
+## Clone the repo
+
+```bash
+git clone https://github.com/your-username/diner-app.git
+cd diner-app
+npm install
 ---

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { supabase } from '../supabaseClient';
-import Button from './ui/Button';
-import { useToast } from '../context/ToastContext';
+import React, { useState } from "react";
+import { supabase } from "../supabaseClient";
+import Button from "./ui/Button";
+import { useToast } from "../context/ToastContext";
 
 function LoginForm({ onClose, onSuccess }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSignup, setIsSignup] = useState(false);
   const toast = useToast();
   const handleSubmit = async (e) => {
@@ -14,16 +14,19 @@ function LoginForm({ onClose, onSuccess }) {
     if (isSignup) {
       const { error } = await supabase.auth.signUp({ email, password });
       if (!error) {
-        onSuccess?.();       // optional chaining
-        setTimeout(() => onClose(), 300); // delay to allow any UI feedback
-        toast('Signin successful!');
+        onSuccess?.();
+        setTimeout(() => onClose(), 300);
+        toast("Signin successful!");
       }
     } else {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
       if (!error) {
         onSuccess?.();
         setTimeout(() => onClose(), 300);
-        toast('Login successful!');
+        toast("Login successful!");
       }
     }
   };
@@ -32,7 +35,7 @@ function LoginForm({ onClose, onSuccess }) {
     <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg w-96 shadow-md">
         <h2 className="text-2xl md:text-3xl lg:text-3xl mb-4 text-center text-primary font-markazi">
-          {isSignup ? 'Sign Up' : 'Log In'}
+          {isSignup ? "Sign Up" : "Log In"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4  ">
           <input
@@ -52,19 +55,22 @@ function LoginForm({ onClose, onSuccess }) {
             className="w-full border border-accent focus:border-2 focus:border-accent focus:outline-none px-3 py-2 rounded-md"
           />
           <div className="w-full flex justify-center">
-            <Button className="px-4 mt-4 md:text-xl lg:text-2xl font-markazi" type="submit">
-              {isSignup ? 'Sign Up' : 'Log In'}
+            <Button
+              className="px-4 mt-4 md:text-xl lg:text-2xl font-markazi"
+              type="submit"
+            >
+              {isSignup ? "Sign Up" : "Log In"}
             </Button>
           </div>
         </form>
 
         <div className="mt-4 text-center text-sm">
-          {isSignup ? 'Already have an account?' : 'Don’t have an account?'}{' '}
+          {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
           <button
             onClick={() => setIsSignup(!isSignup)}
             className="text-blue-600 underline"
           >
-            {isSignup ? 'Log in' : 'Sign up'}
+            {isSignup ? "Log in" : "Sign up"}
           </button>
         </div>
 

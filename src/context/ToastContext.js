@@ -1,12 +1,11 @@
-// context/ToastContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
 const ToastContext = createContext();
 
 export function ToastProvider({ children }) {
   const [toast, setToast] = useState(null);
 
-  const showToast = (message, type = 'success', duration = 800) => {
+  const showToast = (message, type = "success", duration = 800) => {
     setToast({ message, type });
     setTimeout(() => setToast(null), duration);
   };

@@ -2,10 +2,7 @@ import { supabase } from "../supabaseClient";
 import Button from "./ui/Button";
 import { useToast } from "../context/ToastContext";
 import React, { useState } from "react";
-<<<<<<< HEAD
-=======
 
->>>>>>> 98eae3e (Fix: Added missing useState import in LoginForm.js)
 function LoginForm({ onClose, onSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

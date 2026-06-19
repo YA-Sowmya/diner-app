@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
 
 export default function useCart(user) {
   const storageKey = user?.id ? `cart-${user.id}` : "cart-guest";
@@ -20,29 +19,13 @@ export default function useCart(user) {
     localStorage.setItem(storageKey, JSON.stringify(items));
   }, [items, storageKey]);
 
-  useEffect(() => {
-    const syncToSupabase = async () => {
-      if (!user) return;
-
-      const { error } = await supabase
-        .from("orders")
-        .upsert({ user_id: user.id, cart: items }, { onConflict: ["user_id"] });
-
-      if (error) {
-        console.error("Supabase cart sync error:", error.message);
-      }
-    };
-
-    syncToSupabase();
-  }, [user, items]);
-
   const addToCart = (dish) => {
     if (!dish.id) return;
     setItems((prev) => {
       const existing = prev.find((i) => i.id === dish.id);
       if (existing) {
         return prev.map((i) =>
-          i.id === dish.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === dish.id ? { ...i, quantity: i.quantity + 1 } : i,
         );
       }
       return [...prev, { ...dish, quantity: 1 }];
@@ -55,9 +38,9 @@ export default function useCart(user) {
         .map((item) =>
           item.id === id
             ? { ...item, quantity: removeAll ? 0 : item.quantity - 1 }
-            : item
+            : item,
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity > 0),
     );
   };
 

@@ -23,11 +23,20 @@ function LoginForm({ onClose, onSuccess }) {
         email,
         password,
       });
-      if (!error) {
-        onSuccess?.();
-        setTimeout(() => onClose(), 300);
-        toast("Login successful!");
+      if (error) {
+        if (error.message.includes("Invalid login credentials")) {
+          toast("Incorrect email or password");
+        } else if (error.message.includes("Email not confirmed")) {
+          toast("Please verify your email first");
+        } else {
+          toast("Something went wrong");
+        }
+        return;
       }
+
+      onSuccess?.();
+      setTimeout(() => onClose(), 300);
+      toast("Login successful!");
     }
   };
 
@@ -57,8 +66,7 @@ function LoginForm({ onClose, onSuccess }) {
           <div className="w-full flex justify-center">
             <Button
               className="px-4 mt-4 md:text-xl lg:text-2xl font-markazi"
-              type="submit"
-            >
+              type="submit">
               {isSignup ? "Sign Up" : "Log In"}
             </Button>
           </div>
@@ -68,16 +76,14 @@ function LoginForm({ onClose, onSuccess }) {
           {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
           <button
             onClick={() => setIsSignup(!isSignup)}
-            className="text-blue-600 underline"
-          >
+            className="text-blue-600 underline">
             {isSignup ? "Log in" : "Sign up"}
           </button>
         </div>
 
         <button
           onClick={onClose}
-          className="mt-4 block mx-auto text-sm text-gray-600 hover:text-black"
-        >
+          className="mt-4 block mx-auto text-sm text-gray-600 hover:text-black">
           Close
         </button>
       </div>
